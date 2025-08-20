@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Site Acessível</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      font-size: 16px;
+      background-color: white;
+      color: black;
+      margin: 0;
+      padding: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .acessibilidade-botao {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #333;
+      color: white;
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      z-index: 1000;
+    }
+
+    .menu-acessibilidade {
+      display: none;
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .menu-acessibilidade button {
+      display: block;
+      width: 100%;
+      margin: 5px 0;
+      padding: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* Alto contraste */
+    body.alto-contraste {
+      background-color: black;
+      color: yellow;
+    }
+
+    body.dislexico {
+      font-family: 'OpenDyslexic', Arial, sans-serif;
+    }
+
+    body.fonte-grande {
+      font-size: 20px;
+    }
+
+    body.fonte-pequena {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>Bem-vindo ao Site Acessível</header>
+  <p>Este é um exemplo de site com recursos básicos de acessibilidade. Use o botão de acessibilidade no canto inferior direito para ajustar a visualização conforme suas necessidades.</p>
+
+  <div class="acessibilidade-botao" id="btnAcessibilidade">♿</div>
+
+  <div class="menu-acessibilidade" id="menuAcessibilidade">
+    <button onclick="aumentarFonte()">Aumentar Fonte</button>
+    <button onclick="diminuirFonte()">Diminuir Fonte</button>
+    <button onclick="alternarContraste()">Alto Contraste</button>
+    <button onclick="alternarDislexia()">Fonte Disléxica</button>
+  </div>
+
+  <script>
+    const btn = document.getElementById('btnAcessibilidade');
+    const menu = document.getElementById('menuAcessibilidade');
+    let fonteEstado = 'normal';
+
+    btn.addEventListener('click', () => {
+      menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+    });
+
+    function aumentarFonte() {
+      document.body.classList.remove('fonte-pequena');
+      document.body.classList.add('fonte-grande');
+    }
+
+    function diminuirFonte() {
+      document.body.classList.remove('fonte-grande');
+      document.body.classList.add('fonte-pequena');
+    }
+
+    function alternarContraste() {
+      document.body.classList.toggle('alto-contraste');
+    }
+
+    function alternarDislexia() {
+      document.body.classList.toggle('dislexico');
+    }
+  </script>
+</body>
+</html>
